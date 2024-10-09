@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import Service, Appointment
 from .forms import AppointmentForm
 # Create your views here.
 
+
+@login_required
 def service_list(request):
     services = Service.objects.all()
     return render(request, 'appointments/service_list.html', {'services': services})
